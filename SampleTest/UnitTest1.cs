@@ -7,12 +7,16 @@ namespace SampleTest
     [TestClass]
     public class UnitTest1
     {
-        User user;
+        UserModel model;
+
+        public TestContext TestContext { get; set; }
+
+        [ClassInitialize]
 
         [TestInitialize]
         public void TestInitialize()
         {
-            user = new User() { Name = "adachi", Age = 34 };
+            model = new UserModel();
         }
 
         [TestMethod, TestCategory("smoke")]
@@ -32,12 +36,22 @@ namespace SampleTest
             Assert.AreEqual(exp, act);
         }
 
+        // Parameterized Tests. show below.
+        // https://www.rhyous.com/2015/05/08/row-tests-or-paramerterized-tests-mstest-csv/
         [TestMethod]
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"Data.csv", "Data#csv", DataAccessMethod.Sequential)]
+        [DeploymentItem(@"Data\Data.csv")]
         public void TestMethod3()
         {
-            user.AddAge(10);
-            Assert.AreEqual(user.Age, 44);
+            model.AddUser(new User()
+            {
+                Name = TestContext.DataRow[0].ToString(),
+                Age = Int32.Parse(TestContext.DataRow[1].ToString()),
+            });
+
+            Assert.AreEqual(model.users.Count, 1);
         }
+
 
         [Ignore]
         [TestMethod]
@@ -45,5 +59,6 @@ namespace SampleTest
         {
             Assert.Fail();
         }
+
     }
 }

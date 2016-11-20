@@ -16,6 +16,8 @@ namespace Sample
         public int Age { get; set; }
         public string Password { get; private set; }
 
+        private int Point { get; set; }
+
         public void AddAge(int age)
         {
             Age += age;
