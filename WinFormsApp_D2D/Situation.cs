@@ -1,14 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
 //using System.Drawing;
 using System.Windows.Forms;
 using Microsoft.WindowsAPICodePack.DirectX.Direct2D1;
 using Microsoft.WindowsAPICodePack.DirectX.DirectWrite;
+using FontStyle = Microsoft.WindowsAPICodePack.DirectX.DirectWrite.FontStyle;
 
 namespace WinFormsApp_D2D
 {
     public partial class Situation : Form
     {
-        RenderTarget renderTarget;
+        private List<RenderTarget> renderTargets;
+        RenderTarget renderTarget1, renderTarget2;
         Random rand;
         SolidColorBrush blackBlush;
         SolidColorBrush redBlush;
@@ -59,53 +63,61 @@ namespace WinFormsApp_D2D
         /// <param name="e"></param>
         protected override void OnPaint(PaintEventArgs e)
         {
-            //Console.WriteLine("onpaint!!");
+            Console.WriteLine("onpaint!!");
             rand = new Random(Environment.TickCount);
             try
             {
-                // 描画開始
-                renderTarget.BeginDraw();
-
-                // 背景塗りつぶし
-                renderTarget.Clear(new ColorF(0.9f, 0.9f, 0.9f));
-
-                // 線分描画 buffering on memory 
-                //renderTarget.DrawLine(
-                //    new Point2F(0, 0),
-                //    new Point2F(this.ClientRectangle.Width, this.ClientRectangle.Height),
-                //    blush,
-                //    1);
-
-                // テキスト描画            
-                // define font style
-                const string fontFamily = "Wingdings"; // you can edit this of course, ex) "Wingdings", "Arial"
-                const float fontSize = 14.0f;
-                TextFormat tf = dwriteFactory.CreateTextFormat(
-                    fontFamily,
-                    fontSize,
-                    FontWeight.Normal,
-                    FontStyle.Normal,
-                    FontStretch.Normal);
-
-                // 16進数 -> 数値 -> 文字 -> 文字列
-                string charCode = "51";
-                int charCode16 = Convert.ToInt32(charCode, 16);  // 16進数文字列 -> 数値
-                char c = Convert.ToChar(charCode16);  // 数値(文字コード) -> 文字
-                string str = c.ToString();    // 文字 -> 「文字列」
-                for (int i = 0; i < 10; i++)
+                foreach (var renderTarget in renderTargets)
                 {
-                    float left = rand.Next(0, (int)renderTarget.Size.Width);
-                    float top = rand.Next(0, (int)renderTarget.Size.Height);
-                    renderTarget.DrawText(str, tf, new RectF(left, top, left + fontSize, top + fontSize), blueBlush);
-                }
 
-                // 描画終了 flush buffered data
-                renderTarget.EndDraw();
+                    // 描画開始
+                    renderTarget.BeginDraw();
+                    Console.WriteLine("BeginDraw{0}", renderTarget.GetHashCode());
+
+
+                    // 背景塗りつぶし
+                    renderTarget.Clear(new ColorF(0.9f, 0.9f, 0.9f));
+
+                    // 線分描画 buffering on memory 
+                    //renderTarget1.DrawLine(
+                    //    new Point2F(0, 0),
+                    //    new Point2F(this.ClientRectangle.Width, this.ClientRectangle.Height),
+                    //    blush,
+                    //    1);
+
+                    // テキスト描画            
+                    // define font style
+                    const string fontFamily = "Wingdings"; // you can edit this of course, ex) "Wingdings", "Arial"
+                    const float fontSize = 14.0f;
+                    TextFormat tf = dwriteFactory.CreateTextFormat(
+                        fontFamily,
+                        fontSize,
+                        FontWeight.Normal,
+                        FontStyle.Normal,
+                        FontStretch.Normal);
+
+                    // 16進数 -> 数値 -> 文字 -> 文字列
+                    string charCode = "51";
+                    int charCode16 = Convert.ToInt32(charCode, 16);  // 16進数文字列 -> 数値
+                    char c = Convert.ToChar(charCode16);  // 数値(文字コード) -> 文字
+                    string str = c.ToString();    // 文字 -> 「文字列」
+                    for (int i = 0; i < 10; i++)
+                    {
+                        float left = rand.Next(0, (int)renderTarget.Size.Width);
+                        float top = rand.Next(0, (int)renderTarget.Size.Height);
+                        renderTarget.DrawText(str, tf, new RectF(left, top, left + fontSize, top + fontSize), renderTarget.CreateSolidColorBrush(new ColorF(0.0f, 0.0f, 1.0f)));
+                    }
+
+                    // 描画終了 flush buffered data
+                    renderTarget.EndDraw();
+
+                }
             }
             catch (Exception ex)
             {
                 // handle if draw failed.
                 Console.WriteLine("[error][{0}]{1}", DateTime.Now.Millisecond, ex.Message);
+                Console.WriteLine(ex.StackTrace);
                 throw;
             }
             finally
@@ -132,21 +144,40 @@ namespace WinFormsApp_D2D
                 RenderTargetType = RenderTargetType.Default
             };
 
-            // handle
-            HwndRenderTargetProperties hwndRenderTargetProperties = new HwndRenderTargetProperties
+            // handle1
+            HwndRenderTargetProperties hwndRenderTargetProperties1 = new HwndRenderTargetProperties
             {
-                WindowHandle = this.Handle,
+                // WindowHandle = this.Handle,
+                // WindowHandle = Graphics.FromHdc(this.pictureBox1.Handle).GetHdc(),
+                WindowHandle = this.pictureBox1.Handle,
                 // PixelSize = new SizeU((uint)this.ClientRectangle.Width, (uint)this.ClientRectangle.Height), // クライアント領域次第で変わる
-                PixelSize = new SizeU((uint)this.MdiParent.ClientRectangle.Width, (uint)this.MdiParent.ClientRectangle.Height), // クライアント領域次第で変わる
+                // PixelSize = new SizeU((uint)this.MdiParent.ClientRectangle.Width, (uint)this.MdiParent.ClientRectangle.Height), // クライアント領域次第で変わる
+                PixelSize = new SizeU((uint)this.pictureBox1.Width, (uint)this.pictureBox1.Height),
                 PresentOptions = PresentOptions.Immediately
             };
-            renderTarget = d2DFactory.CreateHwndRenderTarget(renderTargetProperties, hwndRenderTargetProperties);
+            renderTarget1 = d2DFactory.CreateHwndRenderTarget(renderTargetProperties, hwndRenderTargetProperties1);
+
+            // handle2
+            HwndRenderTargetProperties hwndRenderTargetProperties2 = new HwndRenderTargetProperties
+            {
+                //WindowHandle = Graphics.FromHdc(this.pictureBox2.Handle).GetHdc(),
+                WindowHandle = this.pictureBox2.Handle,
+                PixelSize = new SizeU((uint)this.pictureBox2.Width, (uint)this.pictureBox2.Height),
+                PresentOptions = PresentOptions.Immediately
+            };
+            renderTarget2 = d2DFactory.CreateHwndRenderTarget(renderTargetProperties, hwndRenderTargetProperties2);
+
+            renderTargets = new List<RenderTarget>
+            {
+                renderTarget1,
+                renderTarget2
+            };
 
             // create blushes
-            blackBlush = renderTarget.CreateSolidColorBrush(new ColorF(0.0f, 0.0f, 0.0f));
-            redBlush = renderTarget.CreateSolidColorBrush(new ColorF(1.0f, 0.0f, 0.0f));
-            greenBlush = renderTarget.CreateSolidColorBrush(new ColorF(0.0f, 1.0f, 0.0f));
-            blueBlush = renderTarget.CreateSolidColorBrush(new ColorF(0.0f, 0.0f, 1.0f));
+            blackBlush = renderTarget1.CreateSolidColorBrush(new ColorF(0.0f, 0.0f, 0.0f));
+            redBlush = renderTarget1.CreateSolidColorBrush(new ColorF(1.0f, 0.0f, 0.0f));
+            greenBlush = renderTarget2.CreateSolidColorBrush(new ColorF(0.0f, 1.0f, 0.0f));
+            blueBlush = renderTarget1.CreateSolidColorBrush(new ColorF(0.0f, 0.0f, 1.0f));
 
             // define and start timer
             Timer timer = new Timer();
@@ -154,6 +185,30 @@ namespace WinFormsApp_D2D
             timer.Tick += Render;
             timer.Start();
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.splitContainer1.Panel1Collapsed = false;
+            this.splitContainer1.Panel2Collapsed = false;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.splitContainer1.Panel2Collapsed = true;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Child child1 = new Child();
+            child1.MdiParent = this.MdiParent;
+            // child1.Size = this.pictureBox1.ClientSize;
+            child1.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.splitContainer1.Panel1Collapsed = true;
         }
     }
 }

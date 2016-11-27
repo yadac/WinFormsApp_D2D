@@ -17,8 +17,7 @@ namespace WinFormsApp_D2D
         {
             try
             {
-                Situation situation = new Situation();
-                situation.MdiParent = this;
+                Situation situation = new Situation {MdiParent = this};
                 situation.Show();
             }
             catch (Exception ex)
@@ -31,5 +30,6 @@ namespace WinFormsApp_D2D
         {
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
         }
+
     }
 }
