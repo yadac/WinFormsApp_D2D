@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WinFormsApp_D2D
+namespace UserControls
 {
     static class Program
     {
@@ -13,7 +16,7 @@ namespace WinFormsApp_D2D
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Parent());
+            Application.Run(new Form1());
         }
     }
 }
