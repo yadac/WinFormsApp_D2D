@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace WinFormsApp_D2D
@@ -22,13 +23,16 @@ namespace WinFormsApp_D2D
             try
             {
                 child = new Child { MdiParent = this };
+                //child = new Child();
+                //child.TopLevel = false;
+                //this.Controls.Add(child);
+                //child.BringToFront();
                 child.Show();
             }
             catch (Exception ex)
             {
                 System.Console.WriteLine(ex.Message);
             }
-            // this.WindowState = FormWindowState.Maximized;
         }
 
         private void Parent_Resize(object sender, EventArgs e)
@@ -45,7 +49,7 @@ namespace WinFormsApp_D2D
         {
             if (child != null)
             {
-                this.child.WindowState = FormWindowState.Maximized;
+                this.child.Size = new Size(this.ClientRectangle.Width, this.ClientRectangle.Height);
             }
                 
         }

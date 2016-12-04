@@ -56,9 +56,9 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.WindowsAPICodePack.DirectX, Version=1.1.0.0, Culture=neutral, processorArchitecture=x86">
+    <Reference Include="Microsoft.WindowsAPICodePack.DirectX, Version=1.1.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\WindowsAPICodePack-DirectX.1.1.2\lib\Microsoft.WindowsAPICodePack.DirectX.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -103,6 +103,9 @@
     <Compile Include="SubWindow.Designer.cs">
       <DependentUpon>SubWindow.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ChildF.resx">
+      <DependentUpon>ChildF.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Parent.resx">
       <DependentUpon>Parent.cs</DependentUpon>
     </EmbeddedResource>

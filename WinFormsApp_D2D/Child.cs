@@ -46,10 +46,10 @@ namespace WinFormsApp_D2D
             // todo : mstest, coverrage, msbuild
 
             InitializeComponent();
-            this.ControlBox = false;
-            this.Text = "child";
+            //this.ControlBox = false;
+            //this.Text = "child";
             // this.ClientSize = new Size(MaximumSize.Width, MaximumSize.Height);
-            this.WindowState = FormWindowState.Maximized;
+            // this.WindowState = FormWindowState.Maximized;
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace WinFormsApp_D2D
                 // handle if draw failed.
                 Console.WriteLine("[error][{0}]{1}", DateTime.Now.Millisecond, ex.Message);
                 Console.WriteLine(ex.StackTrace);
-                throw;
+                throw ex;
             }
             finally
             {
