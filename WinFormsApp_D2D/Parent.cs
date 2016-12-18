@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace WinFormsApp_D2D
 {
     public partial class Parent : Form
     {
-        private Child child;
+        private Toolbar t1, t2;
+        private int t1c, t2c;
         /// <summary>
         /// 初期化処理
         /// </summary>
@@ -14,20 +16,18 @@ namespace WinFormsApp_D2D
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
-            // this.ControlBox = false;
-            // this.Text = "";
+            this.Height = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height;
+            this.Width = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width;
         }
 
         private void Parent_Load(object sender, System.EventArgs e)
         {
+            apHeader1.Button1Click += ShowOneSituation;
+            apHeader1.Button2Click += ShowTwoSituation;
+
             try
             {
-                child = new Child { MdiParent = this };
-                //child = new Child();
-                //child.TopLevel = false;
-                //this.Controls.Add(child);
-                //child.BringToFront();
-                child.Show();
+                ShowOneSituation();
             }
             catch (Exception ex)
             {
@@ -35,23 +35,70 @@ namespace WinFormsApp_D2D
             }
         }
 
-        private void Parent_Resize(object sender, EventArgs e)
+        public void ShowOneSituation()
         {
-            // this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void Parent_SizeChanged(object sender, EventArgs e)
-        {
-            if (child != null)
+            apHeader1.Label1 = t1c++.ToString();
+            try
             {
-                this.child.Size = new Size(this.ClientRectangle.Width, this.ClientRectangle.Height);
+                t1?.Close();
+                t1 = new Toolbar();
+                t1.TopLevel = false;
+                this.Controls.Add(t1);
+                t1.Height = this.Height - apHeader1.Height;
+                t1.Width = this.Width;
+                t1.Location = new Point(this.Location.X, this.Location.Y + apHeader1.Height);
+                t1.Show();
             }
-                
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.Message);
+                throw;
+            }
         }
+
+
+        public void ShowTwoSituation()
+        {
+            try
+            {
+                t1?.Close();
+                t2?.Close();
+
+                apHeader1.Label1 = t1c++.ToString();
+                t1 = new Toolbar
+                {
+                    TopLevel = false,
+                    Height = this.Height - apHeader1.Height,
+                    Width = this.Width / 2,
+                    Location = new Point(0, 0 + apHeader1.Height),
+                };
+                this.Controls.Add(t1);
+                t1.Dock = DockStyle.Left;
+                t1.BringToFront();
+                t1.Show();
+
+                apHeader1.Label2 = t2c++.ToString();
+                t2 = new Toolbar
+                {
+                    TopLevel = false,
+                    Height = this.Height - apHeader1.Height,
+                    Width = this.Width / 2,
+                    Location = new Point(0 + apHeader1.Width, 0 + apHeader1.Height),
+                };
+                this.Controls.Add(t2);
+                t2.Dock = DockStyle.Right;
+                t2.BringToFront();
+                t2.Show();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                System.Console.WriteLine(ex.Message);
+                throw;
+            }
+
+        }
+
     }
 }
