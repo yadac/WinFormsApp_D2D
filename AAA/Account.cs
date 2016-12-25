@@ -4,13 +4,17 @@
     {
         public Account()
         {
-            Balance = 200m;
+            // Balance = 200m;
         }
         public void AddTransaction(decimal amount)
         {
-
+            Balance += amount;
         }
 
-        public decimal Balance { get; private set; }
+        public decimal Balance
+        {
+            get;
+            private set;
+        }
     }
 }
