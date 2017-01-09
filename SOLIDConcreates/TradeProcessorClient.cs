@@ -8,7 +8,7 @@ using SOLIDInterfaces;
 
 namespace SOLIDConcreates
 {
-    public class Startup
+    public class TradeProcessorClient
     {
         public static void Main()
         {
@@ -21,6 +21,7 @@ namespace SOLIDConcreates
             var tradeParser = new SimpleTradeParser(tradeValidator, tradeMapper);
             var tradeStorage = new AdoNetTradeStorage(logger);
 
+            // TradeProcessorに直接依存している(open/close principle)
             TradeProcessor tradeProcessor = new TradeProcessor(tradeDataProvider, tradeParser, tradeStorage);
             tradeProcessor.ProcessTrades();
         }

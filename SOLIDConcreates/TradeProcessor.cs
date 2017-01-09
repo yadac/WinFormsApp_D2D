@@ -9,7 +9,7 @@ using SOLIDInterfaces;
 
 namespace SOLIDConcreates
 {
-    public class TradeProcessor
+    public class TradeProcessor : ITradeProcessor // TradeProcessorAbstract
     {
         private readonly ITradeDataProvider tradeDataProvider;
         private readonly ITradeParser tradeParser;

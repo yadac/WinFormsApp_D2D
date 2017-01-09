@@ -4,15 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5773AAFD-9301-49AD-A16C-FF4BED3AB152}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{38CA6928-3064-4BD6-B850-E1E0CBF950D6}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SOLIDConcreates</RootNamespace>
-    <AssemblyName>SOLIDConcreates</AssemblyName>
+    <RootNamespace>Variance</RootNamespace>
+    <AssemblyName>Variance</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -30,14 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net">
-      <HintPath>..\packages\log4net-1.2.15\bin\net\4.5\release\log4net.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.SQLite">
-      <HintPath>..\packages\System.Data.SQLite.Core.1.0.104.0\lib\net46\System.Data.SQLite.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,25 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdoNetTradeStorage.cs" />
-    <Compile Include="Log4NetLoggerAdapter.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SimpleTradeMapper.cs" />
-    <Compile Include="SimpleTradeParser.cs" />
-    <Compile Include="SimpleTradeValidator.cs" />
-    <Compile Include="TradeProcessorAbstract.cs" />
-    <Compile Include="TradeProcessorClient.cs" />
-    <Compile Include="StreamTradeDataProvider.cs" />
-    <Compile Include="TradeProcessor.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SOLIDInterfaces\SOLIDInterfaces.csproj">
-      <Project>{2bd0306c-57f8-4ea7-800b-7494fa85c718}</Project>
-      <Name>SOLIDInterfaces</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="trades.txt" />
+    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
