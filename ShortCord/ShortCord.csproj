@@ -4,15 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5773AAFD-9301-49AD-A16C-FF4BED3AB152}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{0F70A0FD-AC0F-4CF0-B216-8F5E1D9BF973}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SOLIDConcreates</RootNamespace>
-    <AssemblyName>SOLIDConcreates</AssemblyName>
+    <RootNamespace>ShortCord</RootNamespace>
+    <AssemblyName>ShortCord</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -30,14 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net">
-      <HintPath>..\packages\log4net-1.2.15\bin\net\4.5\release\log4net.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.SQLite">
-      <HintPath>..\packages\System.Data.SQLite.Core.1.0.104.0\lib\net46\System.Data.SQLite.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,32 +43,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdoNetTradeStorage.cs" />
-    <Compile Include="AuditInfo.cs" />
-    <Compile Include="CrudCaching.cs" />
-    <Compile Include="CrudLogging.cs" />
-    <Compile Include="CrudTransactional.cs" />
-    <Compile Include="DeleteConfirmation.cs" />
-    <Compile Include="Log4NetLoggerAdapter.cs" />
+    <Compile Include="ISampleCode.cs" />
+    <Compile Include="MyClass.cs" />
+    <Compile Include="MyClassA.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReadCaching.cs" />
-    <Compile Include="SaveAuditing.cs" />
-    <Compile Include="SimpleTradeMapper.cs" />
-    <Compile Include="SimpleTradeParser.cs" />
-    <Compile Include="SimpleTradeValidator.cs" />
-    <Compile Include="TradeProcessorAbstract.cs" />
-    <Compile Include="TradeProcessorClient.cs" />
-    <Compile Include="StreamTradeDataProvider.cs" />
-    <Compile Include="TradeProcessor.cs" />
+    <Compile Include="SC0104.cs" />
+    <Compile Include="SC0105.cs" />
+    <Compile Include="SC0107.cs" />
+    <Compile Include="SC0108.cs" />
+    <Compile Include="SC0111.cs" />
+    <Compile Include="SC0109.cs" />
+    <Compile Include="SC0110.cs" />
+    <Compile Include="SC0112.cs" />
+    <Compile Include="SC0113.cs" />
+    <Compile Include="SC0114.cs" />
+    <Compile Include="SC0116.cs" />
+    <Compile Include="SC0117.cs" />
+    <Compile Include="SC0118.cs" />
+    <Compile Include="SC0201.cs" />
+    <Compile Include="SC0202.cs" />
+    <Compile Include="SC0203.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SOLIDInterfaces\SOLIDInterfaces.csproj">
-      <Project>{2bd0306c-57f8-4ea7-800b-7494fa85c718}</Project>
-      <Name>SOLIDInterfaces</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="trades.txt" />
+    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
