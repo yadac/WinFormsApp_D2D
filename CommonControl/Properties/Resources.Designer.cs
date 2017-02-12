@@ -63,6 +63,16 @@ namespace CommonControl.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
+        internal static System.Drawing.Bitmap cursor_001 {
+            get {
+                object obj = ResourceManager.GetObject("cursor_001", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
         internal static System.Drawing.Bitmap glyphicons_1_glass {
             get {
                 object obj = ResourceManager.GetObject("glyphicons_1_glass", resourceCulture);
@@ -116,6 +126,16 @@ namespace CommonControl.Properties {
         internal static System.Drawing.Bitmap glyphicons_5_girl {
             get {
                 object obj = ResourceManager.GetObject("glyphicons_5_girl", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap glyphicons_5_girl___コピー {
+            get {
+                object obj = ResourceManager.GetObject("glyphicons_5_girl___コピー", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

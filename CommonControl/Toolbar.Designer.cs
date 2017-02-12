@@ -77,6 +77,7 @@
             this.button2.Size = new System.Drawing.Size(75, 56);
             this.button2.TabIndex = 1;
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -90,8 +91,8 @@
             // 
             // button4
             // 
-            this.button4.BackColor = System.Drawing.Color.DimGray;
-            this.button4.Image = global::CommonControl.Properties.Resources.glyphicons_5_girl;
+            this.button4.BackColor = System.Drawing.Color.Maroon;
+            this.button4.Image = global::CommonControl.Properties.Resources.glyphicons_5_girl___コピー;
             this.button4.Location = new System.Drawing.Point(246, 3);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 56);

@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,6 +32,16 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'AirPlane|AnyCPU'">
+    <OutputPath>bin\AirPlane\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -64,6 +75,30 @@
     <Compile Include="SC0201.cs" />
     <Compile Include="SC0202.cs" />
     <Compile Include="SC0203.cs" />
+    <Compile Include="SC0210.cs" />
+    <Compile Include="SC0213.cs" />
+    <Compile Include="SC0214.cs" />
+    <Compile Include="SC0301.cs" />
+    <Compile Include="SC0303.cs" />
+    <Compile Include="SC0304.cs" />
+    <Compile Include="SC0401.cs" />
+    <Compile Include="SC0402.cs" />
+    <Compile Include="Sc0403.cs" />
+    <Compile Include="Sc0409.cs" />
+    <Compile Include="Sc0410.cs" />
+    <Compile Include="Sc0414.cs" />
+    <Compile Include="Sc0415.cs" />
+    <Compile Include="Sc0501.cs" />
+    <Compile Include="Sc0503.cs" />
+    <Compile Include="Sc0514.cs" />
+    <Compile Include="Sc0515.cs" />
+    <Compile Include="Sc0517.cs" />
+    <Compile Include="SC1208.cs" />
+    <Compile Include="SCA001.cs" />
+    <Compile Include="SCA002.cs" />
+    <Compile Include="SCA003.cs" />
+    <Compile Include="SCA004.cs" />
+    <Compile Include="SCA005.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

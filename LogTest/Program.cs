@@ -20,7 +20,6 @@ namespace LogTest
             logger.Error("システムが停止するまではいかない障害が発生");
             logger.Fatal("システムが停止する致命的な障害が発生");
 
-            Console.ReadLine();
         }
     }
 }

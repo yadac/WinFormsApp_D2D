@@ -10,7 +10,7 @@ namespace ShortCord
     {
         static void Main(string[] args)
         {
-            new SC0203();
+            new Sc1208();
             Console.Read();
         }
     }
