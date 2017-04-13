@@ -1,0 +1,9 @@
+C:\Users\doruj\Dropbox\github\projects\WinFormsApp_D2D\SampleTarget\bin\Debug\SampleTarget.exe.config
+C:\Users\doruj\Dropbox\github\projects\WinFormsApp_D2D\SampleTarget\bin\Debug\SampleTarget.exe
+C:\Users\doruj\Dropbox\github\projects\WinFormsApp_D2D\SampleTarget\bin\Debug\SampleTarget.pdb
+C:\Users\doruj\Dropbox\github\projects\WinFormsApp_D2D\SampleTarget\obj\Debug\SampleTarget.csprojResolveAssemblyReference.cache
+C:\Users\doruj\Dropbox\github\projects\WinFormsApp_D2D\SampleTarget\obj\Debug\SampleTarget.Form1.resources
+C:\Users\doruj\Dropbox\github\projects\WinFormsApp_D2D\SampleTarget\obj\Debug\SampleTarget.Properties.Resources.resources
+C:\Users\doruj\Dropbox\github\projects\WinFormsApp_D2D\SampleTarget\obj\Debug\SampleTarget.csproj.GenerateResource.Cache
+C:\Users\doruj\Dropbox\github\projects\WinFormsApp_D2D\SampleTarget\obj\Debug\SampleTarget.exe
+C:\Users\doruj\Dropbox\github\projects\WinFormsApp_D2D\SampleTarget\obj\Debug\SampleTarget.pdb
